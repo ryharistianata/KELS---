@@ -155,3 +155,83 @@ void PUNTEN(){
     curs_set(1);
     endwin();
 }
+
+void TA() {
+    srand(time(0)); 
+    int tar = rand() % 1000 + 1; 
+    int tbk;
+    int coba = 0;
+
+    system("cls");
+
+    cout << "=====================================\n";
+    cout << "    ==  PERMAINAN TEBAK ANGKA  ==\n";
+    cout << "=====================================\n";
+    cout << "    ==     == \n";
+    cout << "    ==     == \n";
+    cout << "    ==     == \n";
+    cout << "    ==     == \n";
+    cout << "    ==     == \n";
+    cout << "======================\n";
+    cout << "== ANGKA RANDOM ==\n";
+    cout << "========================\n";
+    cout << "== TEBAKAN DIMULAI ==\n"; 
+    cout << "========================\n";
+
+    while (true) {
+        cout << "INPUT ANGKA ANDA : ";
+        cin >> tbk;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(1000, '\n'); 
+            cout << "INPUT ANGKA YANG VALID !!\n";
+            continue;
+        }
+
+        coba++;
+
+        if (tbk < tar) {
+            cout << "TERLALU RENDAH !\n";
+        } else if (tbk > tar) {
+            cout << "TERLALU TINGGI !\n";
+        } else {
+            cout << "============================\n"; 
+            cout << "   == ANZAY BENER == \n"; 
+            cout << "============================\n"; 
+            cout << tar << " DALAM TEBAKAN KE - " << coba << "\n";
+            break;
+        }
+    }
+}
+
+int main() {
+
+    system("cls");
+
+    LOAD();
+
+    PUNTEN();
+
+    LOAD();
+
+    char pilihan;
+
+    do {
+        TA();
+
+        cout << "\nMAIN LAGI KAGA BROHH ?? (y/n): ";
+        cin >> pilihan;
+
+        
+        while (pilihan != 'y' && pilihan != 'n') {
+            cout << "YANG BENER BRO,DIBACA ANTARA y ama n DOANG ";
+            cin >> pilihan;
+        }
+    } while (pilihan == 'y');
+
+    cout << "=================================\n";
+    cout << "    ==== MAKASI DAH MAIN NGAB ========\n";
+    cout << "  ===============================\n";
+    return 0;
+}
