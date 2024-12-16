@@ -1,1 +1,149 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+#include <fstream>
+#include <vector>
+#include <ctime>
+#include <ncurses/curses.h>
+#include <iomanip> //setw
+#include <windows.h>  // Windows API
+
+using namespace std;
+
+//============================================================== gamee
+void ULER()
+{
+    const int lebar = 50;
+    const int tinggi = 30;
+    int skor = 0;
+    int skorTertinggi = 0;
+
+    int x, y, xMakanan, yMakanan, xEkor[100], yEkor[100];
+    int jumlahEkor;
+    bool permainanSelesai;
+    enum Arah { BERHENTI = 0, KIRI, KANAN, ATAS, BAWAH};
+    Arah arah;
+
+    srand(time(0));
+    permainanSelesai = false;
+    arah = BERHENTI;
+    x = lebar / 2;
+    y = tinggi / 2;
+    xMakanan = rand() % lebar;
+    yMakanan = rand() % tinggi;
+    skor = 0;
+    jumlahEkor = 0;
+
+    while (!permainanSelesai)
+    {
+        system("cls");
+
+        for (int i = 0; i < lebar + 2; i++)
+            cout << "\033[1;34m#\033[0m";
+
+        cout << endl;
+
+        for (int i = 0; i < tinggi; i++)
+        {
+            for (int j = 0; j < lebar; j++)
+            {
+                if (j == 0 || j == lebar - 1)
+                    cout << "\033[1;34m#\033[0m";
+                else if (i == y && j == x)
+                {
+                    if (arah == ATAS)
+                        cout << "\033[1;32m^\033[0m";
+                    else if (arah == BAWAH)
+                        cout << "\033[1;32mv\033[0m";
+                    else if (arah == KIRI)
+                        cout << "\033[1;32m<\033[0m";
+                    else if (arah == KANAN)
+                        cout << "\033[1;32m>\033[0m";
+                }
+                else if (i == yMakanan && j == xMakanan)
+                    cout << "\033[1;33m*\033[0m";
+                else
+                {
+                    bool cetak = false;
+                    for (int k = 0; k < jumlahEkor; k++)
+                    {
+                        if (xEkor[k] == j && yEkor[k] == i)
+                        {
+                            cout << "\033[1;32m#\033[0m";
+                            cetak = true;
+                        }
+                    }
+                    if (!cetak)
+                        cout << " ";
+                }
+            }
+            cout << endl;
+        }
+
+        for (int i = 0; i < lebar + 2; i++)
+            cout << "\033[1;34m#\033[0m";
+
+        cout << endl;
+        cout << "Skor: " << skor << "  Skor Tertinggi: " << skorTertinggi << endl;
+
+        if (_kbhit())
+        {
+            switch (_getch())
+            {
+            case 'a': arah = KIRI; break;
+            case 'd': arah = KANAN; break;
+            case 'w': arah = ATAS; break;
+            case 's': arah = BAWAH; break;
+            case 'x': permainanSelesai = true; break;
+            }
+        }
+
+        int xSebelumnya = xEkor[0];
+        int ySebelumnya = yEkor[0];
+        int xSebelumnya2, ySebelumnya2;
+        xEkor[0] = x;
+        yEkor[0] = y;
+
+        for (int i = 1; i < jumlahEkor; i++)
+        {
+            xSebelumnya2 = xEkor[i];
+            ySebelumnya2 = yEkor[i];
+            xEkor[i] = xSebelumnya;
+            yEkor[i] = ySebelumnya;
+            xSebelumnya = xSebelumnya2;
+            ySebelumnya = ySebelumnya2;
+        }
+
+        switch (arah)
+        {
+        case KIRI: x--; break;
+        case KANAN: x++; break;
+        case ATAS: y--; break;
+        case BAWAH: y++; break;
+        default: break;
+        }
+
+        if (x >= lebar) x = 0; else if (x < 0) x = lebar - 1;
+        if (y >= tinggi) y = 0; else if (y < 0) y = tinggi - 1;
+
+        for (int i = 0; i < jumlahEkor; i++)
+            if (xEkor[i] == x && yEkor[i] == y)
+                permainanSelesai = true;
+
+        if (x == xMakanan && y == yMakanan)
+        {
+            skor += 10;
+            jumlahEkor++;
+            xMakanan = rand() % lebar;
+            yMakanan = rand() % tinggi;
+
+            if (skor > skorTertinggi)
+                skorTertinggi = skor;
+        }
+
+        Sleep(100);
+    }
+}
+
+//==========================================================================
 
