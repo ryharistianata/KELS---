@@ -524,3 +524,170 @@ int main() {
 	resetColor();
 	
 	    system ("cls");
+
+switch(pil) {
+        case 1:
+        	int well;
+        	
+        	LOAD();
+        	
+        	setColor(9); 
+        	cout << "==========================================" << endl;
+        	cout << "==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==" << endl;
+        	cout << "==========================================" << endl;
+        	cout << "++" << endl;
+        	cout << "++" << endl;
+        	cout << "=================" << endl;
+        	cout << "++ 1. FITUR TABEL KELOMPOK " << endl;
+        	cout << "++ 2. GAME " << endl;
+        	cout << "++++++++++++++++++++++++++++" << endl;
+        	cout << "++ yang mana ? ? "; cin >> well;
+        	
+        	resetColor();
+        	
+        	system ("cls");
+        	  		  setColor(12);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+	
+        	  		  setColor(9);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+
+        	  		  setColor(6);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+
+        	  		  setColor(3);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+        	
+        	system ("cls");
+        	
+        	switch(well){
+        		
+        		case 1:
+        			FitKel();
+        		break;
+        		
+        		case 2:
+        			mainMenu();
+        		break;
+			}
+        	
+            
+        case 2:
+        	        	system ("cls");
+        	  		  setColor(12);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+	
+        	  		  setColor(9);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+
+        	  		  setColor(12);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+
+        	  		  setColor(9);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+						 system ("cls");
+
+            break;
+            
+            setColor(9); 
+            	
+        case 3:
+        	
+        		system ("cls");
+        	  		  setColor(12);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+	
+        	  		  setColor(9);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+
+        	  		  setColor(12);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+
+        	  		  setColor(9);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+						
+						 system ("cls");
+
+        	setColor(9);
+            cout << "KELUAR DARI PROGRAM ..." << endl;
+            cin.get();
+            cout << "byee..." << endl;
+            cin.get();
+            exit(0);
+            resetColor();
+        
+			 
+        default:
+        		system ("cls");
+        	  		  setColor(12);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+	
+        	  		  setColor(9);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+
+        	  		  setColor(12);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+
+        	  		  setColor(9);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+					 system ("cls");
+						 
+        	setColor(9);
+            cout << "PILIH YG BENER NYET !! " << endl;
+            resetColor();
+            
+    }
+    
+	
+    
+    return 0;
+}
+
