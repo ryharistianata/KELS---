@@ -342,3 +342,41 @@ void loginPage() {
     } while (!loginSuccess);
 }
 
+void mainMenu() {
+    int choice;
+
+    system("cls");  
+    showHeader();
+    typeText("Welcome to the Game, do you want to?\n", 40);
+    typeText("1. Login\n", 40);
+    typeText("2. Register\n", 40);
+    typeText("3. Exit\n", 40);
+    cout << "Choose an option (1, 2 or 3): ";
+    cin >> choice;
+    cin.ignore(); 
+
+    switch (choice) {
+        case 1:
+            cout << "You chose Login.\n";
+            loginPage();  
+            break;
+        case 2:
+            cout << "You chose Register.\n";
+            registerPage();  
+            break;
+        case 3:
+            cout << "Exiting the program.\n";
+            exit(0);
+            break;
+        default:
+            setColor(12);
+            typeText("Invalid choice! Please choose 1, 2 or 3.\n", 40);
+            mainMenu();  
+    }
+}
+
+
+void resetColor() {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, 7); 
+}
