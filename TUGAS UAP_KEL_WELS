@@ -147,3 +147,37 @@ void ULER()
 
 //==========================================================================
 
+//============
+void LOAD(){
+    initscr();
+
+    curs_set(0);
+    
+    string loading = "=== || LOADING ||                   ";
+
+    for(int i = 0; i < 27; i++){
+        mvprintw(2,i, "=");
+        mvprintw(3,i + 5, "%c", loading[i]);
+        mvprintw(4,i + 2, "===");
+        mvprintw(5,i + 5, "%c", loading[i]); 
+        mvprintw(6,i, "=");
+
+        refresh();
+        Sleep(100);
+    }
+
+    for(int i = 1; i <= 100; i++){
+        mvprintw(3, 23, "%d", i);
+        mvprintw(5, 23, "%d", i);
+        mvprintw(3, 26, "%%");
+        mvprintw(5, 26, "%%");
+        refresh();
+        Sleep(50);
+    }
+
+    clear();
+    curs_set(1);
+    endwin();
+}
+//============
+
