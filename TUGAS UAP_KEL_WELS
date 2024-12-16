@@ -380,3 +380,147 @@ void resetColor() {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, 7); 
 }
+
+// buat bagian menu 1
+void FitKel() {
+    int total;
+    
+	system("cls");
+	
+	  
+    setColor(9); 
+    cout << "==================================================" << endl;
+    cout << setw(20) << "DATA DATA KELOMPOK" << endl;
+    cout << "==================================================" << endl;
+    resetColor();
+
+	setColor(6);
+    cout << "++ INPUT BRP ANGGOTA : "; cin >> total;
+    cin.ignore();
+
+    vector<string> anggotaKelompok;
+
+    for (int i = 0; i < total; i++) {
+        string nama;
+        cout << "MASUKAN ANGGOTA KEL KE - " << (i + 1) << ": ";
+        getline(cin, nama);
+        anggotaKelompok.push_back(nama);
+    }
+    
+    system ("cls");
+
+    cout << "=========================================" << endl;
+    cout << setw(5) << "No" << setw(30) << "NAMA ANGGOTA KELOMPOK" << endl;
+    cout << "=========================================" << endl;
+
+    for (int i = 0; i < anggotaKelompok.size(); i++) {
+        cout << setw(5) << (i + 1) << setw(30) << anggotaKelompok[i] << endl;
+    }
+    resetColor();
+    
+	setColor(9); 
+    cout << "=========================================" << endl;
+    cout << "  == TOTAL ANGGOTA KELOMPOK : " << anggotaKelompok.size() << endl;
+    cout << "=========================================" << endl;
+    resetColor();
+    
+    Sleep(20000);
+    
+    
+}
+//==========================================================
+int main() {
+	int pil;
+	
+	LOAD();
+	
+	cin.get();
+
+    setColor(9);  
+    cout << "==========================================================\n"; 
+    resetColor();
+    
+    setColor(12); 
+    cout << "    ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  \n";
+    cout << "  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == \n";
+    cout << "    ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  \n"; 
+    resetColor();
+    
+    cout << " --------------------------------------------------------\n";
+    
+    setColor(12);  
+    cout << "    ++   ++  ++      ++++++     +++++++  ++++++          \n";
+    cout << "    ++   ++          ++   +++   ++       ++  +++         \n";
+    cout << "    +++++++  ++      ++     ++  +++++    ++    ++        \n";
+    cout << "    +++++++  ++      ++     ++  +++++    ++  +++         \n";
+    cout << "    ++   ++  ++      ++   +++   ++       ++  ++          \n";
+    cout << "    ++   ++  ++      ++++++     +++++++  ++   ++         \n";
+    resetColor();
+    
+    cout << " --------------------------------------------------------\n"; 
+    
+    setColor(12);  
+    cout << "    ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  \n";
+    cout << "  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == \n";
+    cout << "    ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  \n"; 
+    resetColor();
+    
+    setColor(9);  
+    cout << "==========================================================\n";
+    resetColor();
+    
+    Sleep(3000);
+    
+    LOAD();
+    
+    system("cls");
+    
+    setColor(1);
+    cout << "		                       ======================" << endl;
+    resetColor(); 
+    
+    setColor(3);
+    cout << "                                          SHUP BROHH !! " << endl; 
+    resetColor();
+    
+    
+    setColor(1);
+	cout << "                                   ======================   " << endl; 
+	resetColor();
+	
+	cin.get(); 
+	
+	cout << "\n\n\n";
+	
+	setColor(1);
+	cout << "============================================" << endl;
+	resetColor();
+	
+	setColor(3);
+	cout << "   ==  SELAMAT DATANG DI MAIN MENU ++" << endl;
+	resetColor();
+	
+	setColor(1);
+	cout << "=======================================\n" << endl;
+	resetColor();
+	
+	cin.get();
+	
+	setColor(1);
+	cout << "==========================" << endl;
+	cout << "== MASUKIN   ++" << endl;
+	cout << "==========================" << endl;
+	resetColor();
+	
+	setColor(3);
+	cout << "== 1 : MENU " << endl;
+	cout << "== 2 : TEAM " << endl;
+	cout << "== 3 : KELUAR" << endl;
+	resetColor();
+	
+	setColor(1);
+	cout << "==========================" << endl;
+	cout << "++ yg mana ?? "; cin >> pil;
+	resetColor();
+	
+	    system ("cls");
