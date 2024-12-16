@@ -179,5 +179,166 @@ void LOAD(){
     curs_set(1);
     endwin();
 }
-//============
+
+void setColor(int color) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
+void showHeader() {
+    setColor(14);
+    cout << "              !! Welcome to the Game !! \n";
+    cout << "================================================\n";
+    setColor(15);
+}
+
+void typeText(const string& text, int delay = 40) {
+    for (char ch : text) {
+        cout << ch;
+        Sleep(delay);
+    }
+    cout << endl;
+}
+
+bool hasSpace(const string& str) {
+    for (char c : str) {
+        if (c == ' ') {
+            return true;
+        }
+    }
+    return false;
+}
+
+void mainMenu();
+
+void registerPage() {
+    string nickname, password;
+    ofstream myfile;
+
+    system("cls");
+    showHeader();
+    typeText("Dear Player, Let's create your epic game account!!\n", 40);
+
+    setColor(15);
+    do {
+        cout << "Enter your game Nickname (no spaces allowed): ";
+        getline(cin, nickname);
+
+        if (hasSpace(nickname)) {
+            setColor(12);
+            typeText("Error: Nickname cannot contain spaces. Please try again...\n", 20);
+        }
+    } while (hasSpace(nickname));
+
+    setColor(15);
+    do {
+        cout << "Create a strong Password (min 6 chars): ";
+        cin >> password;
+
+        if (password.length() < 6) {
+            setColor(12);
+            typeText("Password too short! Please try again...\n", 30);
+        }
+    } while (password.length() < 6);
+
+    myfile.open("game_register.txt", ios::app);
+    if (myfile.is_open()) {
+        myfile << "Nickname: " << nickname << endl;
+        myfile << "Password: " << password << endl;
+        myfile << "=============================\n";
+        myfile.close();
+
+        setColor(14);
+        typeText("\nRegistration success!!\n", 40);
+
+        char choice;
+        do {
+            cout << "\nDo you want to return to the main menu? (y/n): ";
+            cin >> choice;
+            cin.ignore();
+
+            if (choice == 'y' || choice == 'Y') {
+                mainMenu();
+                return;
+            } else if (choice == 'n' || choice == 'N') {
+                typeText("Okay! You can now proceed to login.\n", 40);
+                return;
+            } else {
+                setColor(12);
+                typeText("Invalid choice! Please choose 'y' or 'n'.\n", 40);
+            }
+        } while (true);
+    } else {
+        setColor(12);
+        typeText("Error saving data! Please try again later.\n", 40);
+    }
+}
+
+void loginPage() {
+    string nickname, password, storedNickname, storedPassword, line;
+    bool loginSuccess = false;
+
+    system("cls");
+    setColor(14);
+    cout << "=====================================\n";
+    cout << "      Let's login to your account    \n";
+    cout << "=====================================\n";
+    setColor(15);
+
+    do {
+        cout << "Enter your game Nickname: ";
+        cin >> nickname;
+        cout << "Enter your Password: ";
+        cin >> password;
+
+        ifstream myfile("game_register.txt");
+        if (myfile.is_open()) {
+            while (getline(myfile, line)) {
+                if (line.find("Nickname: ") != string::npos) {
+                    storedNickname = line.substr(10);
+                }
+                if (line.find("Password: ") != string::npos) {
+                    storedPassword = line.substr(10);
+                }
+
+                if (storedNickname == nickname && storedPassword == password) {
+                    loginSuccess = true;
+                    break;
+                }
+            }
+            myfile.close();
+        }
+
+        if (loginSuccess) {
+            setColor(14);
+            typeText("\nLogin successful! Welcome to the game!!\n", 40);
+            typeText("Game is starting...\n", 40);
+            
+            system ("cls");
+            LOAD ();
+            
+            system("cls");
+            ULER();
+            
+        } else {
+            setColor(12);
+            typeText("\nInvalid nickname or password. Please try again.\n", 30);
+
+            char choice;
+            cout << "\nDo you want to register a new account? (y/n): ";
+            cin >> choice;
+
+            if (choice == 'y' || choice == 'Y') {
+                cin.ignore(); 
+                registerPage();
+                return;  
+            } else if (choice == 'n' || choice == 'N') {
+                cout << "Returning to main menu...\n";
+                return; 
+            } else {
+                setColor(12);
+                typeText("Invalid choice! Please choose 'y' or 'n'.\n", 40);
+            }
+        }
+    } while (!loginSuccess);
+}
 
